@@ -1,0 +1,15 @@
+<div class="advanced-form-container">
+  <label for="exercises">Select exercises:</label>
+  <div id="exercises" name="exercises" multiple>
+    @for (exercise of exercises(); track exercise.id) {
+      <div>
+        <input
+          type="checkbox"
+          [value]="exercise.value"
+          [id]="'exercise-' + exercise.id"
+        />
+        <label [for]="'exercise-' + exercise.id">{{ exercise.name }}</label>
+      </div>
+    }
+  </div>
+</div>

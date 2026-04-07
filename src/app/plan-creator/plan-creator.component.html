@@ -1,0 +1,37 @@
+<form>
+  <div class="plan-creator-container">
+    <h2>Plan Creator</h2>
+    <p>
+      Here you can create your personalized workout plan. Select exercises, set
+      repetitions, and customize your routine to achieve your fitness goals.
+    </p>
+  </div>
+  <div class="plan-creator-box-container">
+    <div class="plan-creator-box1">
+      <label for="goal">Choose a goal:</label>
+      <select id="goal" name="goal">
+        <option value="weight-loss">Weight Loss</option>
+        <option value="muscle-gain">Muscle Gain</option>
+        <option value="endurance">Endurance</option>
+        <option value="strength">Strength</option>
+      </select>
+      <label for="experience">Choose your experience level:</label>
+      <select id="experience" name="experience">
+        <option value="beginner">Beginner</option>
+        <option value="intermediate">Intermediate</option>
+        <option value="advanced">Advanced</option>
+      </select>
+      <label for="days">How many days per week do you want to train?</label>
+      <select id="days" name="days">
+        <option value="2">2 days</option>
+        <option value="3">3 days</option>
+        <option value="4">4 days</option>
+        <option value="5">5 days</option>
+      </select>
+    </div>
+    <div class="plan-creator-box2">
+        <app-advanced-form></app-advanced-form>
+    </div>
+  </div>
+  <button type="submit">Create Plan</button>
+</form>

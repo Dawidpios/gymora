@@ -1,0 +1,18 @@
+.navigation {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  display: flex;
+  padding: 0.5rem 1rem;
+  justify-content: space-around;
+  a {
+    width: fit-content;
+    color: white;
+    flex: 0 0 auto;
+    text-decoration: none;
+    padding: 20px;
+    &.active {
+      font-weight: bold;
+      color:plum
+    }
+  }
+}

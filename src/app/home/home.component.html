@@ -1,0 +1,14 @@
+<div class="home-container">
+  @for (feature of features(); track feature.id) {
+    <div class="card" >
+      <div>
+        <h2>{{feature.title}}</h2>
+      </div>
+      <div class="card-content">
+        <img [src]="feature.src" [alt]="feature.title" class="card-image">
+        <p>{{feature.description}}</p>
+      </div>
+      <button class="card-button">Try it</button>
+    </div>
+  }
+</div>

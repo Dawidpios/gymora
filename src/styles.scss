@@ -1,1 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+
+:root {
+  --bg-primary: #3B3B58;
+  --text-primary: #ffffff;
+  --text-secondary: #A96DA3;
+  --text-thirdary: #BC7C9C;
+  --success-color: #4CAF50;
+  --error-color: #F44336;
+  --warning-color: #FF9800;
+}
+html {
+  width: 100%;
+}
+* {
+  box-sizing: border-box;
+}
+
+body { 
+  width: 100%;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: black;
+  color: var(--text-primary);
+  overflow-x: hidden;
+}
