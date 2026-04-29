@@ -1,0 +1,54 @@
+<div class="plan-details-container">
+  @if (planData) {
+    <div class="plan-info">
+      <div class="info-card">
+        <h4>Goal Strategy</h4>
+        <p>{{ getGoalDescription() }}</p>
+      </div>
+
+      <div class="info-card">
+        <h4>Weekly Structure</h4>
+        <p>
+          <strong>{{ getWeeklyStructureLabel() }}</strong>
+        </p>
+        <p class="structure-description">
+          {{ planData.days }} training days per week
+        </p>
+      </div>
+
+      <div class="info-card">
+        <h4>Training Approach</h4>
+        <p>
+          <strong>{{ getTrainingApproachLabel() }}</strong>
+        </p>
+        <p class="approach-description">{{ getExperienceRecommendation() }}</p>
+      </div>
+
+      <div class="info-card">
+        <h4>Weekly Schedule</h4>
+        <ul>
+          @for (day of getWorkoutStructure(); track day; let i = $index) {
+            <li>
+              <strong>Day {{ i + 1 }}:</strong> {{ day }}
+            </li>
+          }
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h4>Your Selected Exercises</h4>
+        @if (planData.exercises.length > 0) {
+          <div class="exercises-preview">
+            @for (exercise of planData.exercises; track exercise) {
+              <span class="exercise-tag">{{ exercise }}</span>
+            }
+          </div>
+        } @else {
+          <p class="no-exercises">No exercises selected yet.</p>
+        }
+      </div>
+    </div>
+  } @else {
+    <p class="no-data">No plan data available.</p>
+  }
+</div>

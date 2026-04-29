@@ -1,10 +1,9 @@
 import { Component, signal, output } from '@angular/core';
-import { ButtonComponent } from "../../shared/button/button.component";
 
 @Component({
   selector: 'app-advanced-form',
   standalone: true,
-  imports: [ButtonComponent],
+  imports: [],
   templateUrl: './advanced-form.component.html',
   styleUrl: './advanced-form.component.scss',
 })
@@ -27,5 +26,4 @@ export class AdvancedFormComponent {
   hideAdvancedForm() {
     this.close.emit();
   }
-
 }
