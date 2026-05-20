@@ -1,12 +1,41 @@
-<mat-card>
-  <p-carousel>
-    <mat-card-header>
-      <mat-card-title>Project Carousel</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <p>
-        This is a placeholder for the project carousel component.
-      </p>
-    </mat-card-content>
-  </p-carousel>
-</mat-card>
+<p-carousel
+  [circular]="true"
+  [value]="projectsToShow"
+  [numVisible]="1"
+  [numScroll]="1"
+  class="carousel-wrapper"
+>
+  <ng-template pTemplate="item" let-project>
+    <div class="project-card">
+      <h3 class="project-title">{{ project.title }}</h3>
+      <p class="project-description">{{ project.description }}</p>
+
+      <div class="project-tech">
+        @for (tech of project.techStack; track tech) {
+          <span class="tech-badge">{{ tech }}</span>
+        }
+      </div>
+
+      <div class="project-links">
+        @if (project.githubUrl) {
+          <a
+            [href]="project.githubUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="project-link"
+            >GitHub</a
+          >
+        }
+        @if (project.liveUrl) {
+          <a
+            [href]="project.liveUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="project-link project-link--live"
+            >Live Demo</a
+          >
+        }
+      </div>
+    </div>
+  </ng-template>
+</p-carousel>

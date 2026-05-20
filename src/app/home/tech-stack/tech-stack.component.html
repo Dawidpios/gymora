@@ -1,1 +1,13 @@
-<p>tech-stack works!</p>
+<div class="carousel-wrapper">
+  <div class="carousel-track">
+    @for (tech of doubledItems; track $index) {
+      <div
+        class="tech-item"
+        [attr.aria-hidden]="$index >= techItems.length ? true : null"
+      >
+        <img [src]="tech.image" [alt]="tech.name" />
+        <p>{{ tech.name }}</p>
+      </div>
+    }
+  </div>
+</div>

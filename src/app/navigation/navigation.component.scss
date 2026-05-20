@@ -2,17 +2,39 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 100%;
   display: flex;
-  padding: 0.5rem 1rem;
-  justify-content: space-around;
+  padding: 1.5rem 1.5rem;
+  justify-content: center;
+  gap: 2rem;
   a {
     width: fit-content;
     color: white;
     flex: 0 0 auto;
     text-decoration: none;
-    padding: 20px;
+    padding: 0.1rem 0.5rem;
+    border-radius: 0.5rem;
     &.active {
+      border-radius: 0.5rem;
       font-weight: bold;
-      color:plum
+      transition: all 0.3s ease;
+      border: 2px solid #dda0dd;
+      background: linear-gradient(90deg, #a4508b, #fa9251);
+      background-size: 200% 100%;
+      background-position: left;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradient-move 3s linear infinite;
     }
+  }
+}
+
+@keyframes gradient-move {
+  0% {
+    background-position: left;
+  }
+  50% {
+    background-position: right;
+  }
+  100% {
+    background-position: left;
   }
 }
