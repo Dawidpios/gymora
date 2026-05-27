@@ -1,17 +1,21 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
   Validators,
   ReactiveFormsModule,
 } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { PlanDetailsComponent } from './plan-details/plan-details.component';
 import { CommonModule } from '@angular/common';
+import { MessageService } from 'primeng/api';
+import { finalize } from 'rxjs';
+import { FinalCard } from './final-card/final-card';
+import { WorkoutPlan } from './plantypes';
 
 @Component({
   selector: 'app-plan-creator',
@@ -23,21 +27,22 @@ import { CommonModule } from '@angular/common';
     MatButtonModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    FinalCard,
   ],
   templateUrl: './plan-creator.component.html',
   styleUrl: './plan-creator.component.scss',
 })
 export class PlanCreatorComponent {
   showAdvancedForm = signal(false);
-
-  // Form groups for each step
+  result = signal<null | WorkoutPlan>(null);
   basicInfoForm!: FormGroup;
   exercisesForm!: FormGroup;
   planPreviewForm!: FormGroup;
   summaryForm!: FormGroup;
 
-  // Available exercises list
+  http = inject(HttpClient);
+  toast = inject(MessageService);
   exercises = [
     { name: 'Squats', value: 'squats', id: 1 },
     { name: 'Push-ups', value: 'push-ups', id: 2 },
@@ -51,19 +56,18 @@ export class PlanCreatorComponent {
     { name: 'Overhead Press', value: 'overhead-press', id: 10 },
   ];
 
+  pending = signal(false);
+
   constructor(private fb: FormBuilder) {
     this.initializeForms();
   }
 
   private initializeForms(): void {
-    // Step 1: Basic Information
     this.basicInfoForm = this.fb.group({
       goal: ['', Validators.required],
       experience: ['', Validators.required],
       days: ['', Validators.required],
     });
-
-    // Step 2: Exercise Selection
     this.exercisesForm = this.fb.group(
       {
         squats: [false],
@@ -80,17 +84,14 @@ export class PlanCreatorComponent {
       { validators: this.atLeastOneExerciseSelected },
     );
 
-    // Step 3: Plan Preview with customizable options
     this.planPreviewForm = this.fb.group({
       weeklyStructure: ['', Validators.required],
       trainingApproach: ['', Validators.required],
     });
 
-    // Step 4: Summary (no form controls, just review)
     this.summaryForm = this.fb.group({});
   }
 
-  // Custom validator to ensure at least one exercise is selected
   private atLeastOneExerciseSelected(
     group: FormGroup,
   ): { [key: string]: boolean } | null {
@@ -139,7 +140,6 @@ export class PlanCreatorComponent {
       { value: 'upper-lower-full', label: 'Upper/Lower/Full Body' },
     ];
 
-    // Filter based on days - some splits require minimum days
     if (days === 2) {
       return options.filter((opt) =>
         ['fbw', 'upper-lower'].includes(opt.value),
@@ -185,17 +185,41 @@ export class PlanCreatorComponent {
 
   onSubmit(): void {
     if (
-      this.basicInfoForm.valid &&
-      this.exercisesForm.valid &&
-      this.planPreviewForm.valid
+      this.pending() ||
+      !this.basicInfoForm.valid ||
+      !this.exercisesForm.valid ||
+      !this.planPreviewForm.valid
     ) {
-      const formData = {
-        basicInfo: this.basicInfoForm.value,
-        exercises: this.getSelectedExercises(),
-        planDetails: this.planPreviewForm.value,
-      };
-      console.log('Form submitted:', formData);
-      // TODO: Add service call to save plan to backend
+      return;
     }
+
+    const formData = {
+      basicInfo: this.basicInfoForm.value,
+      exercises: this.getSelectedExercises(),
+      planDetails: this.planPreviewForm.value,
+    };
+
+    this.pending.set(true);
+    this.http
+      .post<WorkoutPlan>('http://127.0.0.1:8000/plan-creator', formData)
+      .pipe(finalize(() => this.pending.set(false)))
+      .subscribe({
+        next: (response) => {
+          this.result.set(response);
+          this.toast.add({
+            severity: 'success',
+            summary: 'Success',
+            detail: 'Plan sent successfully',
+          });
+        },
+        error: (error) => {
+          console.error('Error sending plan data:', error);
+          this.toast.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: 'Failed to send plan',
+          });
+        },
+      });
   }
 }

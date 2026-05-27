@@ -1,0 +1,94 @@
+@if (result(); as plan) {
+<div class="plan-card">
+  <section class="plan-section assessment">
+    <h2>Assessment</h2>
+    <p>{{ plan.assessment }}</p>
+  </section>
+
+  <section class="plan-section">
+    <h2>Weekly Training Split</h2>
+    <p>{{ plan.weekly_training_split }}</p>
+  </section>
+
+  <section class="plan-section">
+    <h2>Exercises</h2>
+    <div class="exercises-table-wrapper">
+      <table class="exercises-table">
+        <thead>
+          <tr>
+            <th>Exercise</th>
+            <th>Sets</th>
+            <th>Reps</th>
+            <th>Tempo</th>
+            <th>Rest</th>
+            <th>Technical Cues</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (ex of plan.exercises; track ex.name) {
+          <tr>
+            <td>{{ ex.name }}</td>
+            <td>{{ ex.sets }}</td>
+            <td>{{ ex.reps }}</td>
+            <td>{{ ex.tempo || '—' }}</td>
+            <td>{{ ex.rest }}</td>
+            <td>{{ ex.technical_cues }}</td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <div class="plan-grid">
+    <section class="plan-section">
+      <h2>Progression Strategy</h2>
+      <p>{{ plan.progression_strategy }}</p>
+    </section>
+
+    <section class="plan-section">
+      <h2>Rest Times</h2>
+      <p>{{ plan.rest_times }}</p>
+    </section>
+
+    <section class="plan-section">
+      <h2>Weekly Progression</h2>
+      <p>{{ plan.weekly_progression_recommendations }}</p>
+    </section>
+  </div>
+
+  <div class="plan-grid">
+    <section class="plan-section">
+      <h2>Warm-Up Routine</h2>
+      <ul>
+        @for (step of plan.warm_up_routine; track step) {
+        <li>{{ step }}</li>
+        }
+      </ul>
+    </section>
+
+    <section class="plan-section">
+      <h2>Cooldown & Stretching</h2>
+      <ul>
+        @for (step of plan.cooldown_stretching; track step) {
+        <li>{{ step }}</li>
+        }
+      </ul>
+    </section>
+  </div>
+
+  <section class="plan-section">
+    <h2>Why These Exercises?</h2>
+    <p>{{ plan.why_these_exercises }}</p>
+  </section>
+
+  <section class="plan-section">
+    <h2>Alternative Exercises</h2>
+    <p>{{ plan.alternative_exercises }}</p>
+  </section>
+
+  <section class="plan-section motivation">
+    <p>{{ plan.motivation }}</p>
+  </section>
+</div>
+}

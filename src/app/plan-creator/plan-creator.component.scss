@@ -10,6 +10,7 @@
     color: var(--text-secondary);
     font-weight: bold;
 
+
     @media (max-width: 671px) {
       font-size: 1.5rem;
     }
@@ -67,6 +68,7 @@
 
     .mat-step-label {
       color: var(--text-primary);
+      font-family: 'Raleway', sans-serif;
       
       &.mat-step-label-active {
         color: var(--text-secondary);
@@ -93,7 +95,7 @@
     color: var(--text-secondary);
     margin-bottom: 16px;
     font-weight: 600;
-
+    font-family: 'Raleway', sans-serif;
     @media (max-width: 671px) {
       font-size: 1.2rem;
     }
@@ -278,6 +280,7 @@ select {
     font-weight: 600;
     color: var(--text-primary);
     font-size: 0.95rem;
+    font-family: 'Raleway', sans-serif;
   }
 
   .summary-value {

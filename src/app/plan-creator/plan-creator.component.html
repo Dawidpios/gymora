@@ -5,8 +5,10 @@
     repetitions, and customize your routine to achieve your fitness goals.
   </p>
 </div>
-
-<mat-stepper [linear]="true" #stepper class="plan-stepper">
+@if(result()) {
+  <app-final-card [result]="result()"/>
+} @else {
+    <mat-stepper [linear]="true" #stepper class="plan-stepper">
   <mat-step [stepControl]="basicInfoForm" label="Basic Info">
     <form [formGroup]="basicInfoForm">
       <div class="step-content">
@@ -213,10 +215,17 @@
 
       <div class="stepper-buttons">
         <button mat-button matStepperPrevious>Back</button>
-        <button mat-raised-button color="primary" (click)="onSubmit()">
-          Create Plan
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="onSubmit()"
+          [disabled]="pending()"
+        >
+          {{ pending() ? "Sending..." : "Create Plan" }}
         </button>
       </div>
     </div>
   </mat-step>
 </mat-stepper>
+}
+
