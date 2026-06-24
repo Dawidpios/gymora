@@ -10,28 +10,26 @@
 
 .info-card {
   padding: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface-alt);
   transition: all 0.3s ease-out;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.25);
+    background: #fff;
+    border-color: var(--ink);
   }
 
   h4 {
     font-size: 1.1rem;
-    color: var(--text-secondary);
+    color: var(--ink);
     margin-bottom: 10px;
-    font-weight: 600;
+    font-weight: 800;
   }
 
   p {
     font-size: 0.9rem;
-    color: var(--text-primary);
+    color: var(--ink-soft);
     line-height: 1.6;
     margin: 0;
   }
@@ -39,8 +37,7 @@
   .structure-description,
   .approach-description {
     font-size: 0.85rem;
-    color: var(--text-primary);
-    opacity: 0.8;
+    color: var(--ink-soft);
     margin-top: 6px;
   }
 
@@ -52,15 +49,15 @@
     li {
       padding: 6px 0;
       font-size: 0.9rem;
-      color: var(--text-primary);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      color: var(--ink);
+      border-bottom: 1px solid var(--border);
 
       &:last-child {
         border-bottom: none;
       }
 
       strong {
-        color: var(--text-secondary);
+        color: var(--ink);
       }
     }
   }
@@ -76,23 +73,22 @@
 .exercise-tag {
   display: inline-block;
   padding: 6px 12px;
-  background: rgba(169, 109, 163, 0.2);
-  border: 1px solid rgba(169, 109, 163, 0.4);
+  background: var(--accent-tint);
+  border: 1px solid rgba(200, 245, 38, 0.5);
   border-radius: 20px;
   font-size: 0.85rem;
-  color: var(--text-primary);
+  color: var(--accent-ink);
   transition: all 0.3s ease-out;
 
   &:hover {
-    background: rgba(169, 109, 163, 0.3);
-    border-color: var(--text-secondary);
+    background: rgba(200, 245, 38, 0.3);
+    border-color: var(--accent);
   }
 }
 
 .no-exercises,
 .no-data {
-  color: var(--text-primary);
-  opacity: 0.7;
+  color: var(--ink-soft);
   font-style: italic;
   margin: 0;
 }

@@ -1,14 +1,29 @@
 <nav class="navigation" aria-label="Main navigation">
-  <a routerLink="/home" routerLinkActive="active"> Home </a>
-  <a routerLink="/fitness" routerLinkActive="active"> Fitness helper </a>
-  <a
-    href="https://gyr-dun.vercel.app/"
-    target="_blank"
-    rel="noopener noreferrer"
+  <div class="nav-links" [class.open]="isMenuOpen()">
+    <a routerLink="/home" routerLinkActive="active" (click)="closeMenu()"> Home </a>
+    <a routerLink="/fitness" routerLinkActive="active" (click)="closeMenu()"> Fitness helper </a>
+    <a
+      href="https://gyr-dun.vercel.app/"
+      target="_blank"
+      rel="noopener noreferrer"
+      (click)="closeMenu()"
+    >
+      Shopping planner
+    </a>
+    <a routerLink="/holiday" routerLinkActive="active" (click)="closeMenu()"> Holiday planner </a>
+    <a routerLink="/user" routerLinkActive="active" (click)="closeMenu()"> User </a>
+  </div>
+
+  <button
+    class="nav-burger"
+    [class.open]="isMenuOpen()"
+    (click)="toggleMenu()"
+    [attr.aria-expanded]="isMenuOpen()"
+    aria-label="Toggle navigation"
   >
-    Shopping planner
-  </a>
-  <a routerLink="/holiday" routerLinkActive="active"> Holiday planner </a>
-  <a routerLink="/user" routerLinkActive="active"> User </a>
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </nav>
 <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>

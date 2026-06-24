@@ -1,0 +1,19 @@
+<section class="holiday-container">
+  <h2>Holiday planner</h2>
+  <p>
+    Plan your holidays with ease using our holiday planner.
+  </p>
+  <div class="holiday-card">
+    <input
+      type="text"
+      placeholder="Enter your destination..."
+      [ngModel]="inputValue()"
+      (ngModelChange)="inputValue.set($event)"
+    />
+    <button class="search-btn" (click)="search(inputValue())" [disabled]="isInputEmpty()">Search</button>
+  </div>
+
+  @if(result()) {
+    <app-info-board />
+  }
+</section>

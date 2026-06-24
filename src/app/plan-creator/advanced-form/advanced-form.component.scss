@@ -3,21 +3,19 @@
   flex-direction: column;
   gap: 10px;
   padding: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  box-shadow: 0 8px 28px -18px rgba(15, 15, 12, 0.2);
   transition: transform 0.3s ease-out;
 
   label {
     display: block;
     margin-bottom: 4px;
     font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--text-primary);
+    font-weight: 600;
+    color: var(--ink);
     transition: color 0.3s ease-out;
-
   }
 
   #exercises {
@@ -30,25 +28,22 @@
     max-height: 200px;
 
     &::-webkit-scrollbar {
-      width: 8px;;
+      width: 8px;
     }
-
 
     > div {
       display: flex;
       align-items: center;
       padding: 12px 16px;
-      border: 2px solid rgba(255, 255, 255, 0.2);
-      border-radius: 6px;
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(5px);
-      -webkit-backdrop-filter: blur(5px);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface-alt);
       transition: all 0.3s ease-out;
       cursor: pointer;
 
       &:hover {
-        border-color: var(--text-secondary);
-        background: rgba(255, 255, 255, 0.1);
+        border-color: var(--ink);
+        background: #fff;
       }
 
       input[type="checkbox"] {
@@ -56,7 +51,7 @@
         height: 20px;
         margin-right: 12px;
         cursor: pointer;
-        accent-color: var(--text-secondary);
+        accent-color: var(--ink);
         transition: all 0.3s ease-out;
 
         &:hover {
@@ -64,7 +59,7 @@
         }
 
         &:checked {
-          accent-color: var(--text-thirdary);
+          accent-color: var(--ink);
         }
       }
 
@@ -73,12 +68,12 @@
         margin: 0;
         font-size: 0.9rem;
         font-weight: 500;
-        color: var(--text-primary);
+        color: var(--ink);
         cursor: pointer;
         transition: color 0.3s ease-out;
 
         &:hover {
-          color: var(--text-secondary);
+          color: var(--ink);
         }
       }
     }

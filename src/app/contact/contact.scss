@@ -1,47 +1,13 @@
-@property --grad-left {
-  syntax: '<color>';
-  initial-value: #A96DA3;
-  inherits: false;
-}
-
-@property --grad-right {
-  syntax: '<color>';
-  initial-value: #a5b4fc;
-  inherits: false;
-}
-
-@keyframes header-color-sweep {
-  0% {
-    --grad-left: #A96DA3;
-    --grad-right: #a5b4fc;
-  }
-  50% {
-    --grad-left: #a5b4fc;
-    --grad-right: #A96DA3;
-  }
-  100% {
-    --grad-left: #A96DA3;
-    --grad-right: #a5b4fc;
-  }
-}
-
 .contact-container {
   max-width: 700px;
-  // margin: 20px auto;
   padding: 1rem;
   text-align: center;
 
   h2 {
     font-size: 2rem;
-    font-weight: 700;
+    font-weight: 800;
     margin-bottom: 0.3rem;
-    background: linear-gradient(90deg, var(--grad-left) 0%, var(--grad-right) 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-    animation: header-color-sweep 3s ease-in-out infinite;
-    // font-weight: bold;
+    color: var(--ink);
 
     @media (max-width: 671px) {
       font-size: 1rem;
@@ -50,9 +16,8 @@
 
   p {
     font-size: 0.875rem;
-    color: var(--text-primary);
+    color: var(--ink-soft);
     line-height: 1.5;
-    opacity: 0.9;
     margin-bottom: 1.5rem;
 
     @media (max-width: 671px) {
@@ -63,8 +28,6 @@
 
 .contact-card {
   padding: 2rem 2.5rem;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   text-align: left;
 
   @media (max-width: 671px) {
@@ -75,78 +38,66 @@
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 1.25rem;
 }
 
-.full-width {
-  width: 100%;
-}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
 
-// Angular Material overrides
-::ng-deep .contact-form {
-  .mat-mdc-form-field {
-    .mat-mdc-text-field-wrapper {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 0.375rem;
-      transition: background 0.3s ease-out;
+  label {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
 
-      &:hover {
-        background: rgba(255, 255, 255, 0.1);
-      }
+  input,
+  textarea {
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    font-size: 0.9rem;
+    font-family: 'Manrope', sans-serif;
+    color: var(--ink);
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    outline: none;
+    transition: border-color 0.2s ease-out, background 0.2s ease-out;
+    box-sizing: border-box;
+    resize: none;
+
+    &::placeholder {
+      color: var(--ink-soft);
     }
 
-    .mdc-outlined-text-field--focused .mdc-notched-outline__leading,
-    .mdc-outlined-text-field--focused .mdc-notched-outline__notch,
-    .mdc-outlined-text-field--focused .mdc-notched-outline__trailing {
-      border-color: var(--text-secondary) !important;
-    }
-
-    .mdc-notched-outline__leading,
-    .mdc-notched-outline__notch,
-    .mdc-notched-outline__trailing {
-      border-color: rgba(255, 255, 255, 0.25) !important;
-    }
-
-    .mat-mdc-form-field-focus-overlay {
-      background-color: transparent;
-    }
-
-    .mdc-floating-label,
-    .mat-mdc-floating-label {
-      color: rgba(255, 255, 255, 0.6);
-    }
-
-    .mdc-floating-label--float-above {
-      color: var(--text-secondary) !important;
-    }
-
-    input.mat-mdc-input-element,
-    textarea.mat-mdc-input-element {
-      color: var(--text-primary);
-      caret-color: var(--text-secondary);
+    &:focus {
+      border-color: var(--ink);
+      background: var(--surface);
     }
   }
 }
 
 .submit-btn {
   width: 100%;
-  margin-top: 0.75rem;
-  padding: 0.75rem 1.25rem;
-  font-size: 0.875rem;
-  font-weight: bold;
-  color: #fff;
-  background-color: var(--text-secondary);
+  margin-top: 0.25rem;
+  padding: 0.85rem 1.25rem;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--accent);
+  background-color: var(--ink);
   border: none;
-  border-radius: 0.375rem;
+  border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s ease-out;
-  font-family: 'Raleway', sans-serif;
-  letter-spacing: 0.5px;
+  font-family: 'Archivo', sans-serif;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 
   &:hover {
     background-color: var(--text-thirdary);
     transform: scale(1.02);
-    box-shadow: 0 0.25rem 0.75rem rgba(169, 109, 163, 0.5);
+    box-shadow: 0 0.25rem 0.75rem rgba(15, 15, 12, 0.25);
   }
 
   &:active {

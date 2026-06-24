@@ -3,11 +3,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Manrope', sans-serif;
   font-weight: 400;
-  color: var(--text-primary);
+  color: var(--ink);
   padding: 2rem 2rem;
-  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.15);
 }
 
 .container-box {
@@ -15,7 +14,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width:100%;
+  width: 100%;
   gap: 2rem;
 }
 
@@ -23,19 +22,22 @@
   width: 50%;
   text-align: center;
   margin-bottom: 1rem;
-  border: 1px solid rgba(255,255,255,0.1);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 8px 28px -18px rgba(15, 15, 12, 0.2);
   min-height: 200px;
-  padding: 1rem 1rem;
+  padding: 1.5rem;
   h1 {
     font-size: 2rem;
-    font-weight: 700;
-    color: var(--text-secondary);
+    font-weight: 800;
+    color: var(--ink);
     margin-bottom: 1rem;
-    letter-spacing: 1px;
+    letter-spacing: -0.02em;
   }
   p {
     font-size: 1.1rem;
-    color: var(--text-primary);
+    color: var(--ink-soft);
     max-width: 600px;
     margin: 0 auto;
   }
@@ -43,22 +45,22 @@
 
 .about {
   width: 50%;
-  border-radius: 1rem;
-  padding: 1rem 1rem;
+  border-radius: 16px;
   margin-bottom: 1rem;
-  box-shadow: 0 2px 12px 0 rgba(0,0,0,0.08);
-  padding: 1rem 1rem;
-  border: 1px solid rgba(255,255,255,0.1);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 28px -18px rgba(15, 15, 12, 0.2);
+  padding: 1.5rem;
   min-height: 200px;
   height: stretch;
   h2 {
     text-align: center;
-    color: var(--text-thirdary);
+    color: var(--ink);
     font-size: 2rem;
     margin-bottom: 0.5rem;
   }
   p {
-    color: var(--text-primary);
+    color: var(--ink-soft);
     font-size: 1.1rem;
     margin: 0;
     text-align: center;
@@ -68,18 +70,21 @@
 .projects, .skills {
   width: 50%;
   text-align: center;
-  border: 1px solid rgba(255,255,255,0.1);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 8px 28px -18px rgba(15, 15, 12, 0.2);
   min-height: 200px;
-  padding: 1rem 1rem;
+  padding: 1.5rem;
   h2 {
     text-align: center;
-    color: var(--text-thirdary);
+    color: var(--ink);
     font-size: 2rem;
     margin-bottom: 0.5rem;
   }
   p {
     text-align: center;
-    color: var(--text-primary);
+    color: var(--ink-soft);
     font-size: 1.1rem;
     margin-bottom: 0.5rem;
   }
@@ -91,17 +96,18 @@
     flex-wrap: wrap;
     gap: 1rem;
     li {
-      background: var(--bg-primary);
-      color: var(--text-secondary);
-      border-radius: 0.5rem;
+      background: var(--surface-alt);
+      color: var(--ink);
+      border: 1px solid var(--border);
+      border-radius: 0.6rem;
       padding: 0.5rem 1.2rem;
-      font-weight: 500;
+      font-weight: 600;
       font-size: 1.1rem;
-      box-shadow: 0 1px 4px 0 rgba(0,0,0,0.08);
       transition: background 0.2s, color 0.2s;
       &:hover {
-        background: var(--text-secondary);
-        color: var(--bg-primary);
+        background: var(--ink);
+        color: var(--accent);
+        border-color: var(--ink);
       }
     }
   }
@@ -120,44 +126,36 @@
 
 .contact {
   width: 50%;
-  border: 1px solid rgba(255,255,255,0.1);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 8px 28px -18px rgba(15, 15, 12, 0.2);
   padding: 0;
 }
 
-@property --grad-left {
-  syntax: '<color>';
-  initial-value: #A96DA3;
-  inherits: false;
-}
-
-@property --grad-right {
-  syntax: '<color>';
-  initial-value: #a5b4fc;
-  inherits: false;
-}
-
-.home, .about, .projects, .skills, .contact {
-  h1, h2 {
-    background: linear-gradient(90deg, var(--grad-left) 0%, var(--grad-right) 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-    animation: header-color-sweep 3s ease-in-out infinite;
+@media (max-width: 671px) {
+  .container {
+    padding: 1rem;
   }
-}
 
-@keyframes header-color-sweep {
-  0% {
-    --grad-left: #A96DA3;
-    --grad-right: #a5b4fc;
+  .container-box {
+    flex-direction: column;
   }
-  50% {
-    --grad-left: #a5b4fc;
-    --grad-right: #A96DA3;
+
+  .home,
+  .about,
+  .contact,
+  .projects {
+    width: 100%;
   }
-  100% {
-    --grad-left: #A96DA3;
-    --grad-right: #a5b4fc;
+
+  .home h1 {
+    font-size: 1.5rem;
+  }
+
+  .about h2,
+  .projects h2,
+  .skills h2 {
+    font-size: 1.5rem;
   }
 }

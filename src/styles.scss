@@ -1,25 +1,51 @@
+/* ===========================================================
+   GYMORA · "Pulse" theme — global tokens
+   Light / energetic. Lime accent used as a punch, not a surface.
+   =========================================================== */
 
 :root {
-  --bg-primary: #3B3B58;
-  --text-primary: #ffffff;
-  --text-secondary: #A96DA3;
-  --text-thirdary: #BC7C9C;
-  --success-color: #4CAF50;
-  --error-color: #F44336;
-  --warning-color: #FF9800;
+  /* — Pulse palette — */
+  --bg:          #f7f7f2;   /* page background        */
+  --surface:     #ffffff;   /* cards                  */
+  --surface-alt: #f4f3ee;   /* inputs / subtle fills  */
+  --border:      #e8e7df;   /* hairlines              */
+  --ink:         #0f0f0c;   /* primary text + dark CTA */
+  --ink-soft:    #76746a;   /* secondary text         */
+  --accent:      #c8f526;   /* lime — accent only     */
+  --accent-ink:  #2e3506;   /* text on lime           */
+  --accent-tint: rgba(200, 245, 38, 0.16); /* lime wash */
+
+  --success-color: #3a9d4a;
+  --error-color:   #e5484d;
+  --warning-color: #f08c00;
+
+  /* — backward-compatible aliases (existing var() calls keep working) — */
+  --bg-primary:     var(--bg);
+  --text-primary:   var(--ink);
+  --text-secondary: var(--ink);   /* was purple accent → now ink, readable on light */
+  --text-thirdary:  #2b2b27;      /* hover / pressed */
 }
+
 html {
   width: 100%;
 }
+
 * {
   box-sizing: border-box;
 }
 
-body { 
+body {
   width: 100%;
   margin: 0;
-  font-family: 'Raleway', sans-serif;
-  background-color: black;
-  color: var(--text-primary);
+  font-family: 'Manrope', sans-serif;
+  background-color: var(--bg);
+  color: var(--ink);
   overflow-x: hidden;
+}
+
+/* Display headings — Archivo carries the "sporty" weight */
+h1, h2, h3, h4 {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
 }

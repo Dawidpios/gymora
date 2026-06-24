@@ -1,11 +1,10 @@
-
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user/user.component';
-import { HolidayPlannerComponent } from './holiday-planner/holiday-planner.component';
+import { HolidayPlanner } from './holiday-planner/holiday-planner';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },   
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   {
     path: 'fitness',
@@ -33,6 +32,32 @@ export const routes: Routes = [
       },
     ],
   },
-  { path: 'holiday', component: HolidayPlannerComponent },
+  {
+    path: 'holiday',
+    component: HolidayPlanner,
+    children: [
+      {
+        path: 'attractions',
+        loadComponent: () =>
+          import('./holiday-planner/attractions/attractions').then(
+            (m) => m.Attractions,
+          ),
+      },
+      {
+        path: 'transport',
+        loadComponent: () =>
+          import('./holiday-planner/transport/transport').then(
+            (m) => m.Transport,
+          ),
+      },
+      {
+        path: 'highlights',
+        loadComponent: () =>
+          import('./holiday-planner/highlights/highlights').then(
+            (m) => m.Highlights,
+          ),
+      },
+    ],
+  },
   { path: 'user', component: UserComponent },
 ];

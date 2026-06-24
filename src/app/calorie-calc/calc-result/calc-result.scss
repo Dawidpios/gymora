@@ -1,0 +1,32 @@
+.calorie-result {
+  padding: 1.5rem 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  background: var(--accent);
+  border-radius: 16px;
+
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 0.3rem;
+    color: var(--accent-ink);
+
+    @media (max-width: 671px) {
+      font-size: 1.2rem;
+    }
+  }
+
+  .calorie-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.5;
+
+    @media (max-width: 671px) {
+      font-size: 1rem;
+    }
+  }
+}

@@ -7,9 +7,8 @@
   h2 {
     font-size: 2rem;
     margin-bottom: 5px;
-    color: var(--text-secondary);
-    font-weight: bold;
-
+    color: var(--ink);
+    font-weight: 800;
 
     @media (max-width: 671px) {
       font-size: 1.5rem;
@@ -18,9 +17,8 @@
 
   p {
     font-size: 1rem;
-    color: var(--text-primary);
+    color: var(--ink-soft);
     line-height: 1.5;
-    opacity: 0.9;
 
     @media (max-width: 671px) {
       font-size: 0.9rem;
@@ -33,11 +31,10 @@
   max-width: 1200px;
   margin: 0 auto 40px;
   padding: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+  box-shadow: 0 8px 28px -18px rgba(15, 15, 12, 0.2);
 
   @media (max-width: 671px) {
     width: 90%;
@@ -47,31 +44,33 @@
 
   // Stepper header styling
   ::ng-deep .mat-step-header {
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--surface-alt);
     border-radius: 8px;
     margin: 4px;
     transition: all 0.3s ease-out;
 
     &:hover {
-      background: rgba(255, 255, 255, 0.1);
+      background: #fff;
     }
 
     .mat-step-icon {
-      background-color: rgba(169, 109, 163, 0.4);
+      background-color: var(--ink-soft);
       color: #fff;
     }
 
     .mat-step-icon-selected,
     .mat-step-icon-state-done {
-      background-color: var(--text-secondary);
+      background-color: var(--ink);
+      color: var(--accent);
     }
 
     .mat-step-label {
-      color: var(--text-primary);
-      font-family: 'Raleway', sans-serif;
-      
+      color: var(--ink-soft);
+      font-family: 'Manrope', sans-serif;
+
       &.mat-step-label-active {
-        color: var(--text-secondary);
+        color: var(--ink);
+        font-weight: 700;
       }
     }
   }
@@ -82,7 +81,7 @@
   }
 
   ::ng-deep .mat-stepper-horizontal-line {
-    border-top-color: rgba(255, 255, 255, 0.2);
+    border-top-color: var(--border);
   }
 }
 
@@ -92,18 +91,16 @@
 
   h3 {
     font-size: 1.5rem;
-    color: var(--text-secondary);
+    color: var(--ink);
     margin-bottom: 16px;
-    font-weight: 600;
-    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
     @media (max-width: 671px) {
       font-size: 1.2rem;
     }
   }
 
   .step-description {
-    color: var(--text-primary);
-    opacity: 0.9;
+    color: var(--ink-soft);
     margin-bottom: 20px;
     font-size: 0.95rem;
   }
@@ -115,14 +112,10 @@ label {
   margin-top: 12px;
   margin-bottom: 6px;
   font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--text-primary);
+  font-weight: 600;
+  color: var(--ink);
   text-align: left;
   transition: color 0.3s ease-out;
-
-  &:hover {
-    color: var(--text-secondary);
-  }
 }
 
 .form-select,
@@ -130,30 +123,28 @@ select {
   width: 100%;
   padding: 10px 14px;
   font-size: 0.9rem;
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--text-primary);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface-alt);
+  color: var(--ink);
   cursor: pointer;
   transition: all 0.3s ease-out;
   outline: none;
 
   &:hover {
-    border-color: var(--text-secondary);
-    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--ink);
+    background: #fff;
   }
 
   &:focus {
-    border-color: var(--text-thirdary);
-    background: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 0 12px rgba(169, 109, 163, 0.4);
+    border-color: var(--ink);
+    background: #fff;
+    box-shadow: 0 0 0 3px var(--accent-tint);
   }
 
   option {
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
+    background-color: var(--surface);
+    color: var(--ink);
     padding: 10px;
   }
 }
@@ -175,15 +166,15 @@ select {
   align-items: center;
   gap: 10px;
   padding: 12px;
-  border: 2px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid var(--border);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--surface-alt);
   transition: all 0.3s ease-out;
   cursor: pointer;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: var(--text-secondary);
+    background: #fff;
+    border-color: var(--ink);
     transform: translateY(-2px);
   }
 
@@ -191,13 +182,13 @@ select {
     width: 18px;
     height: 18px;
     cursor: pointer;
-    accent-color: var(--text-secondary);
+    accent-color: var(--ink);
   }
 
   label {
     margin: 0;
     font-size: 0.9rem;
-    color: var(--text-primary);
+    color: var(--ink);
     cursor: pointer;
     flex: 1;
   }
@@ -205,12 +196,12 @@ select {
 
 // Error message
 .error-message {
-  color: #ff6b6b;
+  color: var(--error-color);
   font-size: 0.85rem;
   margin-top: 8px;
   padding: 8px 12px;
-  background: rgba(255, 107, 107, 0.1);
-  border: 1px solid rgba(255, 107, 107, 0.3);
+  background: rgba(229, 72, 77, 0.08);
+  border: 1px solid rgba(229, 72, 77, 0.3);
   border-radius: 6px;
 }
 
@@ -234,17 +225,15 @@ select {
 .plan-preview-section {
   margin-top: 30px;
   padding: 20px;
-  border: 2px solid rgba(169, 109, 163, 0.3);
-  border-radius: 10px;
-  background: rgba(169, 109, 163, 0.05);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(200, 245, 38, 0.5);
+  border-radius: 12px;
+  background: var(--accent-tint);
 
   h4 {
     font-size: 1.3rem;
-    color: var(--text-secondary);
+    color: var(--accent-ink);
     margin-bottom: 16px;
-    font-weight: 600;
+    font-weight: 800;
   }
 }
 
@@ -252,17 +241,15 @@ select {
 .summary-section {
   margin: 20px 0;
   padding: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface-alt);
 
   h4 {
     font-size: 1.2rem;
-    color: var(--text-secondary);
+    color: var(--ink);
     margin-bottom: 12px;
-    font-weight: 600;
+    font-weight: 800;
   }
 }
 
@@ -270,21 +257,20 @@ select {
   display: flex;
   justify-content: space-between;
   padding: 10px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid var(--border);
 
   &:last-child {
     border-bottom: none;
   }
 
   .summary-label {
-    font-weight: 600;
-    color: var(--text-primary);
+    font-weight: 700;
+    color: var(--ink);
     font-size: 0.95rem;
-    font-family: 'Raleway', sans-serif;
   }
 
   .summary-value {
-    color: var(--text-secondary);
+    color: var(--ink-soft);
     font-size: 0.95rem;
     text-transform: capitalize;
   }
@@ -304,10 +290,10 @@ select {
 
   li {
     padding: 8px 12px;
-    background: rgba(169, 109, 163, 0.15);
-    border: 1px solid rgba(169, 109, 163, 0.3);
+    background: var(--accent-tint);
+    border: 1px solid rgba(200, 245, 38, 0.5);
     border-radius: 6px;
-    color: var(--text-primary);
+    color: var(--accent-ink);
     font-size: 0.9rem;
     text-align: center;
   }
@@ -329,8 +315,8 @@ select {
     min-width: 120px;
     padding: 12px 24px;
     font-size: 1rem;
-    font-weight: 600;
-    border-radius: 6px;
+    font-weight: 700;
+    border-radius: 8px;
     transition: all 0.3s ease-out;
 
     @media (max-width: 671px) {
@@ -338,30 +324,30 @@ select {
     }
 
     &[mat-raised-button] {
-      background-color: var(--text-secondary);
-      color: #fff;
+      background-color: var(--ink);
+      color: var(--accent);
 
       &:hover:not(:disabled) {
         background-color: var(--text-thirdary);
         transform: scale(1.02);
-        box-shadow: 0 4px 12px rgba(169, 109, 163, 0.5);
+        box-shadow: 0 4px 12px rgba(15, 15, 12, 0.25);
       }
 
       &:disabled {
-        background-color: rgba(255, 255, 255, 0.1);
-        color: rgba(255, 255, 255, 0.4);
+        background-color: var(--surface-alt);
+        color: var(--ink-soft);
         cursor: not-allowed;
       }
     }
 
     &[mat-button] {
-      background-color: rgba(255, 255, 255, 0.05);
-      color: var(--text-primary);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      background-color: var(--surface-alt);
+      color: var(--ink);
+      border: 1px solid var(--border);
 
       &:hover {
-        background-color: rgba(255, 255, 255, 0.1);
-        border-color: var(--text-secondary);
+        background-color: #fff;
+        border-color: var(--ink);
       }
     }
   }

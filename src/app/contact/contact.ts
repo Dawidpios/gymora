@@ -1,15 +1,11 @@
 import { Component, inject } from '@angular/core';
-import { MatFormField, MatLabel } from '@angular/material/form-field';
-import { MatInput } from '@angular/material/input';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 
-
-
 @Component({
   selector: 'app-contact',
-  imports: [MatFormField, MatLabel, MatInput, ReactiveFormsModule, ToastModule],
+  imports: [ReactiveFormsModule, ToastModule],
   templateUrl: './contact.html',
   styleUrl: './contact.scss',
 })
