@@ -1,1 +1,13 @@
-<p>highlights works!</p>
+<mat-card class="hp-card">
+  <mat-card-header>
+    <mat-card-title>Highlights</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    @for (highlight of highlights; track highlight) {
+    <div class="highlight-item">
+      <h3 class="highlight-item__name">{{highlight.name}}</h3>
+      <p class="highlight-item__reason">{{highlight.reason}}</p>
+    </div>
+    }
+  </mat-card-content>
+</mat-card>

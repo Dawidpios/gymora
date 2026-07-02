@@ -30,12 +30,10 @@ export type Result = {
       tips: string
     }
     public_transport: {
-      available_modes: string[]
-      tickets: {
-        single: string;
-        daily: string;
-        currency: string;
-      }
+      available_modes: {
+        type: string;
+        cost: string;
+      }[]
       apps: string[]
       tips: string
     }

@@ -1,0 +1,19 @@
+.info-board-nav {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  a {
+    text-decoration: none;
+    color: black;
+    font-family: 'Archivo', sans-serif;
+    padding: 5px;
+    border-radius: 8px;
+    &.active {
+      color: var(--accent);
+      background-color: black;
+    }
+  }
+
+}

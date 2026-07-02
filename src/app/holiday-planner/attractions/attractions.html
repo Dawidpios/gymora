@@ -1,1 +1,17 @@
-<p>attractions works!</p>
+<mat-card class="hp-card">
+  <mat-card-header>
+    <mat-card-title>Attractions</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    @for (attr of attractions; track attr) {
+    <div class="attraction-item">
+      <div class="attraction-item__header">
+        <h3 class="attraction-item__name">{{attr.name}}</h3>
+        <span class="attraction-item__type">{{attr.type}}</span>
+      </div>
+      <p class="attraction-item__desc">{{attr.description}}</p>
+      <span class="attraction-item__time">{{attr.estimated_visit_time}}</span>
+    </div>
+    }
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,129 @@
+:host {
+  display: block;
+}
+
+.transport-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+:host ::ng-deep .transport-panel {
+  border: 1px solid var(--border) !important;
+  border-radius: 12px !important;
+  background: var(--surface) !important;
+  box-shadow: none !important;
+  overflow: hidden !important;
+  transition: box-shadow 0.2s ease-out, border-color 0.2s ease-out !important;
+
+  &.mat-expanded {
+    box-shadow: 0 4px 20px -10px rgba(15, 15, 12, 0.18) !important;
+    border-color: rgba(15, 15, 12, 0.15) !important;
+  }
+
+  .mat-expansion-panel-header {
+    height: auto !important;
+    min-height: 52px;
+    padding: 0.75rem 1rem !important;
+    background: transparent !important;
+
+    &:hover {
+      // background: var(--surface-alt) !important;
+    }
+  }
+
+  .mat-content {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    overflow: visible;
+  }
+
+  .mat-expansion-panel-body {
+    padding: 0.75rem 1rem 1rem !important;
+    border-top: 1px solid var(--border);
+  }
+
+  &.transport-panel--tips {
+    background: var(--surface-alt) !important;
+
+    .mat-expansion-panel-header:hover {
+      background: var(--border) !important;
+    }
+  }
+}
+
+.transport-panel__type {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 800;
+  font-size: 0.9rem;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+}
+
+.transport-panel__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+
+  @media (max-width: 671px) {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.15rem;
+  }
+}
+
+.transport-panel__time {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+.transport-panel__cost {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--accent-ink);
+  background: var(--accent-tint);
+  border: 1px solid rgba(200, 245, 38, 0.5);
+  padding: 0.15rem 0.5rem;
+  border-radius: 20px;
+  white-space: nowrap;
+  margin-right: 12px;
+}
+
+.transport-panel__desc {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  margin: 0;
+
+  @media (max-width: 671px) {
+    font-size: 0.8rem;
+  }
+}
+
+.transport-panel__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  &:not(:last-child) {
+    margin-bottom: 0.6rem;
+  }
+
+  li {
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 0.2rem 0.65rem;
+  }
+}

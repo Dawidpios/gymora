@@ -1,1 +1,44 @@
-<p>transport works!</p>
+<div class="transport-list">
+  <h2> Transport z lotniska </h2>
+  @for (transport of transportAirport?.options; track transport) {
+  <mat-expansion-panel class="transport-panel">
+    <mat-expansion-panel-header>
+      <span class="transport-panel__type">{{transport.type | titlecase}}</span>
+      <span class="transport-panel__meta">
+        <span class="transport-panel__time">{{transport.travel_time}}</span>
+        <span class="transport-panel__cost">{{transport.cost}}</span>
+      </span>
+    </mat-expansion-panel-header>
+    <ng-template matExpansionPanelContent>
+      <p class="transport-panel__desc">{{transport.description}}</p>
+    </ng-template>
+  </mat-expansion-panel>
+  }
+  <h2> Poruszanie się po mieście </h2>
+  <mat-expansion-panel class="transport-panel">
+    <mat-expansion-panel-header>
+      <span class="transport-panel__type">Public transport</span>
+    </mat-expansion-panel-header>
+    <ng-template matExpansionPanelContent>
+      <ul class="transport-panel__list">
+        @for (mode of publicTransport?.available_modes; track mode) {
+        <li>{{mode.type | titlecase}} - {{mode.cost}}</li>
+        }
+      </ul>
+      <!-- <ul class="transport-panel__list">
+        @for (cost of ticketsCost; track cost) {
+        <li>{{cost | titlecase}}</li>
+        }
+      </ul> -->
+    </ng-template>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel class="transport-panel transport-panel--tips">
+    <mat-expansion-panel-header>
+      <span class="transport-panel__type">Tips</span>
+    </mat-expansion-panel-header>
+    <ng-template matExpansionPanelContent>
+      <p class="transport-panel__desc">{{transportAirport?.tips}}</p>
+    </ng-template>
+  </mat-expansion-panel>
+</div>

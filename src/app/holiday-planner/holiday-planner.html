@@ -10,7 +10,7 @@
       [ngModel]="inputValue()"
       (ngModelChange)="inputValue.set($event)"
     />
-    <button class="search-btn" (click)="search(inputValue())" [disabled]="isInputEmpty()">Search</button>
+    <button class="search-btn" (click)="search(inputValue())" [disabled]="isInputEmpty() || pending()">Search</button>
   </div>
 
   @if(result()) {

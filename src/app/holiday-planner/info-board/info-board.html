@@ -2,13 +2,11 @@
   <h2>{{details()?.city}} <span>{{details()?.country}}</span></h2>
   <p>{{details()?.description}}</p>
   <section>
-    <nav>
+    <nav class="info-board-nav">
       <a routerLink="/holiday/attractions" routerLinkActive="active">Attractions</a>
       <a routerLink="/holiday/transport" routerLinkActive="active">Transport</a>
       <a routerLink="/holiday/highlights" routerLinkActive="active">Highlights</a>
-  </nav>  
+    </nav>  
     <router-outlet />
   </section>
-
 </div>
-`
