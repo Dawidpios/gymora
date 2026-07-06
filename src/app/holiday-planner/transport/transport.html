@@ -17,7 +17,7 @@
   <h2> Poruszanie się po mieście </h2>
   <mat-expansion-panel class="transport-panel">
     <mat-expansion-panel-header>
-      <span class="transport-panel__type">Public transport</span>
+      <span class="transport-panel__type">Transport publiczny</span>
     </mat-expansion-panel-header>
     <ng-template matExpansionPanelContent>
       <ul class="transport-panel__list">
@@ -25,11 +25,6 @@
         <li>{{mode.type | titlecase}} - {{mode.cost}}</li>
         }
       </ul>
-      <!-- <ul class="transport-panel__list">
-        @for (cost of ticketsCost; track cost) {
-        <li>{{cost | titlecase}}</li>
-        }
-      </ul> -->
     </ng-template>
   </mat-expansion-panel>
 

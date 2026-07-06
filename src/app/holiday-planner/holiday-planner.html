@@ -1,19 +1,41 @@
 <section class="holiday-container">
   <h2>Holiday planner</h2>
-  <p>
-    Plan your holidays with ease using our holiday planner.
-  </p>
+  <p>Plan your holidays with ease using our holiday planner.</p>
   <div class="holiday-card">
+    <label for="city">Destination:</label>
     <input
       type="text"
+      id="city"
       placeholder="Enter your destination..."
-      [ngModel]="inputValue()"
-      (ngModelChange)="inputValue.set($event)"
+      [formField]="form.city"
     />
-    <button class="search-btn" (click)="search(inputValue())" [disabled]="isInputEmpty() || pending()">Search</button>
+    @if(form.city().errors() && form.city().touched()) {
+    <div class="error-message">{{ form.city().errors()[0]?.message }}</div>
+    }
+
+    <select id="attractionsLength" [formField]="form.attractionsLength">
+      <option value="5">5 attractions</option>
+      <option value="10">10 attractions</option>
+      <option value="15">15 attractions</option>
+    </select>
+    <label class="checkbox-row" for="advancedTransport">
+      <input
+        type="checkbox"
+        id="advancedTransport"
+        [formField]="form.advancedTransport"
+      />
+      <span>Accurate transport</span>
+    </label>
+    <button
+      class="search-btn"
+      (click)="onSubmit()"
+      [disabled]="!form().valid() || form().submitting()"
+    >
+      Search
+    </button>
   </div>
 
   @if(result()) {
-    <app-info-board />
+  <app-info-board />
   }
 </section>
